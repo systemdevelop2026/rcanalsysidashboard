@@ -178,7 +178,7 @@
 
     <div class="container">
         <div class="summary-tab-top">
-            <span class="count">17</span>
+            <span class="count">18</span>
             <span class="label">Total Projects Analyzed</span>
         </div>
 
@@ -248,7 +248,7 @@
 
         <!-- SECTION 5 -->
         <div class="section-container">
-            <h2 class="section-title">Section 5: Summary of 17 Project</h2>
+            <h2 class="section-title">Section 5: Summary of 18 Project</h2>
             <div class="summary-block">
                 <h3>Design Poundage (kg/m³)</h3>
                 <div class="stats-grid">
@@ -256,19 +256,19 @@
                     <span class="stat-label">Rebar/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">113.35</span> <span class="val-name">(CS2)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">42.58</span> <span class="val-name">(OIB336+336u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">79.08</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">79.46</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">BRC/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">53.37</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.04</span> <span class="val-name">(Green Camour 200u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">24.12</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">24.23</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Total Reinforcement/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">129.28</span> <span class="val-name">(Elmina499u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">67.94</span> <span class="val-name">(OIB336+336u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">103.21</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">103.69</span></span>
                 </div>
                 </div>
             </div>
@@ -279,25 +279,25 @@
                     <span class="stat-label">Concrete Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">18.68</span> <span class="val-name">(SFH693u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">1.54</span> <span class="val-name">(Setia LCF640u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">12.15</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">12.02</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Rebar Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.76</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">1.28</span> <span class="val-name">(Setia LCF640u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">9.41</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">9.46</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">BRC Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">7.92</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.01</span> <span class="val-name">(Green Camour 200u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">3.98</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">3.99</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Formwork Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.10</span> <span class="val-name">(Green Camour 514u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">1.68</span> <span class="val-name">(Setia LCF640u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">9.87</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">9.99</span></span>
                 </div>
                 </div>
             </div>
@@ -410,19 +410,19 @@
         Chart.defaults.color = '#e0e0e0';
         Chart.defaults.borderColor = '#444';
 
-        const labels = ['Setia LCF640u', 'SK600 (Block 1)', 'SFH693u', 'OIB336+336u', 'Elmina499u', 'IOI Alanis 2', 'BH1-B3B4', 'Sunway 149u', 'BKT2SA', 'EcoSun 500u', 'Setia Sky Ville 2', 'PKNS 615u', 'Green Camour 514u', 'IOI Alyvia', 'Green Camour 200u', 'RSKU 396u', 'CS2'];
-        const eff    = [45.00, 74.00, 45.00, 43.00, 43.00, 46.00, 71.69, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90];
-        const costT  = [5.01, 25.68, 43.45, 39.28, 46.12, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13];
-        const concG  = [0.04, 0.33, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36];
-        const rebM2  = [3.94, 21.85, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19];
-        const brcM2  = [1.13, 15.39, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97];
-        const rebM3  = [93.05, 65.27, 74.24, 42.58, 89.93, 72.70, 101.52, 70.55, 89.62, 52.80, 83.55, 88.30, 85.44, 60.79, 97.50, 63.25, 113.35];
-        const brcM3  = [26.59, 45.98, 25.85, 25.36, 39.35, 23.01, 9.10, 26.59, 5.75, 28.18, 10.49, 40.85, 27.68, 13.74, 0.04, 53.37, 8.18];
-        const ovM3   = [119.64, 111.25, 100.09, 67.94, 129.28, 95.71, 110.62, 97.15, 95.36, 80.98, 94.04, 129.16, 113.12, 74.53, 97.54, 116.62, 121.53];
-        const c_ft   = [1.54, 6.33, 18.68, 16.01, 14.66, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80];
-        const f_ft   = [1.68, 8.70, 8.48, 11.66, 12.65, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07];
-        const r_ft   = [1.28, 5.63, 11.11, 6.49, 11.77, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58];
-        const b_ft   = [0.51, 5.02, 5.18, 5.12, 7.02, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30];
+        const labels = ['Setia LCF640u', 'SK600 (Block 1)', 'SFH693u', 'OIB336+336u', 'Elmina499u', 'IOI Alanis 2', 'BH1-B3B4', 'Sunway 149u', 'BKT2SA', 'EcoSun 500u', 'Setia Sky Ville 2', 'PKNS 615u', 'Green Camour 514u', 'IOI Alyvia', 'Green Camour 200u', 'RSKU 396u', 'CS2', 'eden botanica'];
+        const eff    = [45.00, 74.00, 45.00, 43.00, 43.00, 46.00, 71.69, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
+        const costT  = [5.01, 25.68, 43.45, 39.28, 46.12, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
+        const concG  = [0.04, 0.33, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36, 0.31];
+        const rebM2  = [3.94, 21.85, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19, 26.28];
+        const brcM2  = [1.13, 15.39, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97, 7.94];
+        const rebM3  = [93.05, 65.27, 74.24, 42.58, 89.93, 72.70, 101.52, 70.55, 89.62, 52.80, 83.55, 88.30, 85.44, 60.79, 97.50, 63.25, 113.35, 85.82];
+        const brcM3  = [26.59, 45.98, 25.85, 25.36, 39.35, 23.01, 9.10, 26.59, 5.75, 28.18, 10.49, 40.85, 27.68, 13.74, 0.04, 53.37, 8.18, 25.95];
+        const ovM3   = [119.64, 111.25, 100.09, 67.94, 129.28, 95.71, 110.62, 97.15, 95.36, 80.98, 94.04, 129.16, 113.12, 74.53, 97.54, 116.62, 121.53, 111.78];
+        const c_ft   = [1.54, 6.33, 18.68, 16.01, 14.66, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80, 9.74];
+        const f_ft   = [1.68, 8.70, 8.48, 11.66, 12.65, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07, 12.04];
+        const r_ft   = [1.28, 5.63, 11.11, 6.49, 11.77, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58, 10.28];
+        const b_ft   = [0.51, 5.02, 5.18, 5.12, 7.02, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30, 4.11];
         const ratS   = r_ft.map((r, i) => (r / (b_ft[i] || 0.001)).toFixed(2));
 
         const getOpt = (u) => ({
