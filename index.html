@@ -199,7 +199,7 @@
                 <div class="chart-container"><canvas id="concreteGfaChart"></canvas></div>
             </div>
             <div class="full-width-section chart-section">
-                <h2>4. Reinforcement Ratios: Rebar (kg/m²) &amp; BRC (m2/m2)</h2>
+                <h2>4. Reinforcement Ratios: Rebar (kg/m²) &amp; BRC (kg/m²)</h2>
                 <div class="chart-container"><canvas id="rebarBrcChart"></canvas></div>
             </div>
             <div class="full-width-section chart-section">
@@ -437,7 +437,7 @@
 
         new Chart(document.getElementById('efficiencyChart'),    { type: 'bar', data: { labels, datasets: [{ data: eff,   backgroundColor: '#4caf50' }] }, options: getOpt('%') });
         new Chart(document.getElementById('concreteGfaChart'),   { type: 'bar', data: { labels, datasets: [{ data: concG, backgroundColor: '#2196f3' }] }, options: getOpt(' m3/m2') });
-        new Chart(document.getElementById('rebarBrcChart'),      { type: 'bar', data: { labels, datasets: [{ label: 'Rebar kg/m2', data: rebM2, backgroundColor: '#bb86fc' }, { label: 'BRC m2/m2', data: brcM2, backgroundColor: '#03dac6' }]}, options: { ...getOpt(''), plugins: { legend: { display: true, position: 'top' }, datalabels: { display: true, font: { size: 8 } } } } });
+        new Chart(document.getElementById('rebarBrcChart'),      { type: 'bar', data: { labels, datasets: [{ label: 'Rebar kg/m2', data: rebM2, backgroundColor: '#bb86fc' }, { label: 'BRC kg/m2', data: brcM2, backgroundColor: '#03dac6' }]}, options: { ...getOpt(''), plugins: { legend: { display: true, position: 'top' }, datalabels: { display: true, font: { size: 8 } } } } });
         new Chart(document.getElementById('kgm3Chart'),          { data: { labels, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
         new Chart(document.getElementById('costFtChart'),        { type: 'bar', data: { labels, datasets: [{ data: costT, backgroundColor: '#f44336' }] }, options: getOpt(' RM/ft2') });
         new Chart(document.getElementById('concreteCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: c_ft,  backgroundColor: '#3498db' }] }, options: getOpt('') });
