@@ -231,20 +231,6 @@
             </div>
         </div>
 
-        <!-- SECTION 4 -->
-        <div class="section-container">
-            <h2 class="section-title">Section 4: Location Allocation analysis</h2>
-            <div class="chart-section">
-                <h2 style="text-align:center;text-transform:none;">Area VS Overall GFA %</h2>
-                <div class="chart-container" style="height:500px;"><canvas id="locChart"></canvas></div>
-                <div class="data-table-container">
-                    <table id="locTable">
-                        <thead><tr id="locHead"><th>Project</th></tr></thead>
-                        <tbody id="locBody"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
 
         <!-- SECTION 5 -->
         <div class="section-container">
@@ -279,25 +265,25 @@
                     <span class="stat-label">Concrete Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">18.68</span> <span class="val-name">(SFH693u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">6.11</span> <span class="val-name">(SK600 (Blk 1))</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">12.37</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">12.41</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Rebar Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.76</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">5.60</span> <span class="val-name">(SK600 (Blk 1))</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">9.75</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">9.79</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">BRC Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">7.92</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.01</span> <span class="val-name">(Green Camour 200u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">4.06</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">4.07</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Formwork Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.10</span> <span class="val-name">(Green Camour 514u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">7.07</span> <span class="val-name">(CS2)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">10.55</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">10.59</span></span>
                 </div>
                 </div>
             </div>
@@ -411,18 +397,18 @@
         Chart.defaults.borderColor = '#444';
 
         const labels = ['Setia LCF640u (Blk C)', 'SK600 (Blk 1)', 'SFH693u', 'OIB336+336u', 'Elmina499u', 'IOI Alanis 2 (3 block)', 'BH1-B3B4', 'Sunway 149u', 'BKT2SA', 'EcoSun 500u', 'Setia Sky Ville 2 268u', 'PKNS 615u', 'Green Camour 514u', 'IOI Alyvia', 'Green Camour 200u', 'RSKU 396u', 'CS2', 'eden botanica'];
-        const eff    = [68.00, 73.00, 45.00, 43.00, 43.00, 46.00, 71.69, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
-        const costT  = [30.84, 25.00, 43.45, 39.28, 43.71, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
-        const concG  = [0.26, 0.32, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36, 0.31];
-        const rebM2  = [25.05, 21.74, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19, 26.28];
-        const brcM2  = [6.79, 14.91, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97, 7.94];
+        const eff    = [74.00, 73.00, 45.00, 43.00, 43.00, 46.00, 71.69, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
+        const costT  = [33.34, 25.00, 43.45, 39.28, 43.71, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
+        const concG  = [0.28, 0.32, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36, 0.31];
+        const rebM2  = [27.03, 21.74, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19, 26.28];
+        const brcM2  = [7.32, 14.91, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97, 7.94];
         const rebM3  = [97.31, 67.23, 74.24, 42.58, 89.93, 72.70, 101.52, 70.55, 89.62, 52.80, 83.55, 88.30, 85.44, 60.79, 97.50, 63.25, 113.35, 85.82];
         const brcM3  = [26.36, 46.12, 25.85, 25.36, 39.35, 23.01, 9.10, 26.59, 5.75, 28.18, 10.49, 40.85, 27.68, 13.74, 0.04, 53.37, 8.18, 25.95];
         const ovM3   = [123.68, 113.35, 100.09, 67.94, 129.28, 95.71, 110.62, 97.15, 95.36, 80.98, 94.04, 129.16, 113.12, 74.53, 97.54, 116.62, 121.53, 111.78];
-        const c_ft   = [9.33, 6.11, 18.68, 16.01, 13.41, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80, 9.74];
-        const f_ft   = [10.29, 8.42, 8.48, 11.66, 14.29, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07, 12.04];
-        const r_ft   = [8.11, 5.60, 11.11, 6.49, 10.25, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58, 10.28];
-        const b_ft   = [3.10, 4.86, 5.18, 5.12, 5.76, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30, 4.11];
+        const c_ft   = [10.14, 6.11, 18.68, 16.01, 13.41, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80, 9.74];
+        const f_ft   = [11.10, 8.42, 8.48, 11.66, 14.29, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07, 12.04];
+        const r_ft   = [8.75, 5.60, 11.11, 6.49, 10.25, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58, 10.28];
+        const b_ft   = [3.35, 4.86, 5.18, 5.12, 5.76, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30, 4.11];
         const ratS   = r_ft.map((r, i) => (r / (b_ft[i] || 0.001)).toFixed(2));
 
         const getOpt = (u) => ({
@@ -445,36 +431,6 @@
         new Chart(document.getElementById('combinedSteelCostChart'), { type: 'bar', data: { labels, datasets: [{ label: 'Rebar Amt', data: r_ft, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ft, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? ratS[ctx.dataIndex] + ":1" : "" } } } });
 
 
-    const catL = ['saleable area (residential)', 'saleable area (commercial)', 'carpark', 'facilities', 'green/open space', 'Guard House', 'services', 'stair & lift', 'corridor & lift lobby', 'accessories - store', 'drive way & access'];
-    const locP = [
-        { name: 'SFH693u', color: '#3498db', data: [44.59, 0.42, 16.43, 4.03, 4.11, 0.03, 4.13, 7.66, 12.06, 0.00, 6.53] },
-        { name: 'Sunway 149u', color: '#e74c3c', data: [36.88, 4.59, 34.07, 5.10, 3.88, 0.00, 2.60, 3.66, 9.21, 0.00, 0.00] },
-        { name: 'EcoSun 500u', color: '#2ecc71', data: [45.28, 6.73, 28.99, 1.07, 8.24, 0.01, 1.59, 2.77, 5.32, 0.00, 0.00] },
-        { name: 'Green Camour 514u', color: '#9b59b6', data: [42.79, 0.00, 35.40, 4.42, 0.65, 0.00, 4.77, 3.03, 8.93, 0.15, 0.00] },
-        { name: 'PKNS 615u', color: '#f39c12', data: [37.24, 2.06, 31.80, 4.08, 0.65, 0.00, 4.57, 6.05, 10.50, 0.00, 2.90] },
-        { name: 'Setia Sky Ville 2', color: '#1abc9c', data: [42.60, 0.00, 32.41, 7.79, 0.16, 0.00, 2.32, 3.59, 8.42, 0.00, 2.72] }
-    ];
-
-    new Chart(document.getElementById('locChart'), {
-        type: 'bar',
-        data: { labels: catL, datasets: locP.map(p => ({ label: p.name, data: p.data, backgroundColor: p.color })) },
-        options: {
-            responsive: true, maintainAspectRatio: false,
-            plugins: { legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 9 } } }, datalabels: { anchor: 'end', align: 'top', font: { size: 7, weight: 'bold' }, color: '#fff', formatter: (v) => v > 0 ? v.toFixed(2) + '%' : '' } },
-            scales: { y: { beginAtZero: true, ticks: { callback: (v) => v + '%' } }, x: { grid: { display: false } } }
-        }
-    });
-
-    const hHead = document.getElementById('locHead');
-    const bBody = document.getElementById('locBody');
-    catL.forEach(c => { const th = document.createElement('th'); th.innerText = c; hHead.appendChild(th); });
-    locP.forEach(p => {
-        const tr = document.createElement('tr');
-        const tdN = document.createElement('td'); tdN.className = 'row-label'; tdN.style.borderLeft = `4px solid ${p.color}`; tdN.innerText = p.name;
-        tr.appendChild(tdN);
-        p.data.forEach(v => { const td = document.createElement('td'); td.innerText = v > 0 ? v.toFixed(2) + '%' : ''; tr.appendChild(td); });
-        bBody.appendChild(tr);
-    });
     } // end initCharts
 
     /* ── BOOT ── */
