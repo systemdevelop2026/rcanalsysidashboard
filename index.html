@@ -199,7 +199,7 @@
                 <div class="chart-container"><canvas id="concreteGfaChart"></canvas></div>
             </div>
             <div class="full-width-section chart-section">
-                <h2>4. Reinforcement Ratios: Rebar (kg/m²) &amp; BRC (kg/m²)</h2>
+                <h2>4. Reinforcement Ratios: Rebar (kg/m²) &amp; BRC (m2/m2)</h2>
                 <div class="chart-container"><canvas id="rebarBrcChart"></canvas></div>
             </div>
             <div class="full-width-section chart-section">
@@ -265,25 +265,25 @@
                     <span class="stat-label">Concrete Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">18.68</span> <span class="val-name">(SFH693u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">6.11</span> <span class="val-name">(SK600 (Blk 1))</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">12.28</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">12.24</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Rebar Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.76</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">5.60</span> <span class="val-name">(SK600 (Blk 1))</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">9.64</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">9.60</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">BRC Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">7.92</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.01</span> <span class="val-name">(Green Camour 200u)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">4.18</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">4.17</span></span>
                 </div>
                 <div class="stat-card">
                     <span class="stat-label">Formwork Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.10</span> <span class="val-name">(Green Camour 514u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">7.07</span> <span class="val-name">(CS2)</span></span>
-                    <span class="stat-val">Avg: <span class="val-hl">10.61</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">10.58</span></span>
                 </div>
                 </div>
             </div>
@@ -397,20 +397,19 @@
         Chart.defaults.borderColor = '#444';
 
         const labels = ['Setia LCF640u (Blk C)', 'SK600 (Blk 1) (current price)', 'SK600 (Blk 1)', 'SFH693u', 'OIB336+336u', 'Elmina499u', 'IOI Alanis 2 (3 block)', 'BH1-B3B4', 'Sunway 149u', 'BKT2SA', 'EcoSun 500u', 'Setia Sky Ville 2 268u', 'PKNS 615u', 'Green Camour 514u', 'IOI Alyvia', 'Green Camour 200u', 'RSKU 396u', 'CS2', 'eden botanica'];
-        const eff    = [74.00, 73.00, 73.00, 45.00, 43.00, 42.95, 46.00, 72.00, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
-        const costT  = [31.42, 35.68, 25.00, 43.45, 39.28, 43.71, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
-        const concG  = [0.28, 0.32, 0.32, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36, 0.31];
-        const rebM2  = [27.16, 21.74, 21.74, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19, 26.28];
-        const brcM2  = [7.36, 14.91, 14.91, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97, 7.94];
+        const eff    = [68.00, 73.00, 73.00, 45.00, 43.00, 42.95, 46.00, 72.00, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
+        const costT  = [29.13, 35.68, 25.00, 43.45, 39.28, 43.71, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
+        const concG  = [0.26, 0.32, 0.32, 0.46, 0.44, 0.39, 0.38, 0.59, 0.42, 0.43, 0.37, 0.46, 0.38, 0.38, 0.36, 0.47, 0.33, 0.36, 0.31];
+        const rebM2  = [25.05, 21.74, 21.74, 33.87, 18.58, 35.17, 27.45, 60.10, 29.98, 38.93, 19.66, 38.30, 33.82, 32.42, 21.96, 45.61, 20.60, 41.19, 26.28];
+        const brcM2  = [6.79, 14.91, 14.91, 11.79, 11.07, 15.39, 8.69, 5.39, 11.30, 2.50, 10.49, 4.81, 15.65, 10.50, 4.96, 0.02, 17.38, 2.97, 7.94];
         const rebM3  = [97.31, 67.23, 67.23, 74.24, 42.58, 89.93, 72.70, 101.52, 70.55, 89.62, 52.80, 83.55, 88.30, 85.44, 60.79, 97.50, 63.25, 113.35, 85.82];
         const brcM3  = [26.36, 46.12, 46.12, 25.85, 25.36, 39.35, 23.01, 9.10, 26.59, 5.75, 28.18, 10.49, 40.85, 27.68, 13.74, 0.04, 53.37, 8.18, 25.95];
         const ovM3   = [123.68, 113.35, 113.35, 100.09, 67.94, 129.28, 95.71, 110.62, 97.15, 95.36, 80.98, 94.04, 129.16, 113.12, 74.53, 97.54, 116.62, 121.53, 111.78];
-        const c_ft   = [9.43, 10.56, 6.11, 18.68, 16.01, 13.41, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80, 9.74];
-        const f_ft   = [10.11, 11.92, 8.42, 8.48, 11.66, 14.29, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07, 12.04];
-        const r_ft   = [8.67, 6.94, 5.60, 11.11, 6.49, 10.25, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58, 10.28];
-        const b_ft   = [3.21, 6.26, 4.86, 5.18, 5.12, 5.76, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30, 4.11];
-        const ratS        = r_ft.map((r, i) => (r / (b_ft[i] || 0.001)).toFixed(2));
-        const totalRebBrc = rebM2.map((v, i) => +(v + brcM2[i]).toFixed(2));
+        const c_ft   = [8.70, 10.56, 6.11, 18.68, 16.01, 13.41, 15.20, 8.51, 15.66, 12.02, 13.59, 14.70, 11.93, 10.93, 11.45, 13.59, 9.97, 11.80, 9.74];
+        const f_ft   = [9.48, 11.92, 8.42, 8.48, 11.66, 14.29, 9.77, 7.18, 12.23, 10.14, 8.92, 9.03, 9.42, 15.10, 9.93, 14.77, 11.11, 7.07, 12.04];
+        const r_ft   = [8.00, 6.94, 5.60, 11.11, 6.49, 10.25, 8.05, 8.38, 10.06, 11.83, 6.06, 13.00, 11.04, 10.62, 7.24, 15.76, 7.11, 14.58, 10.28];
+        const b_ft   = [2.96, 6.26, 4.86, 5.18, 5.12, 5.76, 3.32, 3.54, 4.65, 5.00, 4.37, 1.88, 6.41, 4.34, 2.15, 0.01, 7.92, 1.30, 4.11];
+        const ratS   = r_ft.map((r, i) => (r / (b_ft[i] || 0.001)).toFixed(2));
 
         const getOpt = (u) => ({
             responsive: true, maintainAspectRatio: false,
@@ -424,7 +423,8 @@
 
         new Chart(document.getElementById('efficiencyChart'),    { type: 'bar', data: { labels, datasets: [{ data: eff,   backgroundColor: '#4caf50' }] }, options: getOpt('%') });
         new Chart(document.getElementById('concreteGfaChart'),   { type: 'bar', data: { labels, datasets: [{ data: concG, backgroundColor: '#2196f3' }] }, options: getOpt(' m3/m2') });
-        new Chart(document.getElementById('rebarBrcChart'), { data: { labels, datasets: [{ type: 'bar', label: 'Rebar kg/m²', data: rebM2, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' }, formatter: v => v } }, { type: 'bar', label: 'BRC kg/m²', data: brcM2, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' }, formatter: v => v } }, { type: 'line', label: 'Total Reinf (kg/m²)', data: totalRebBrc, borderColor: '#f1c40f', backgroundColor: 'rgba(241,196,15,0.08)', tension: 0.3, fill: false, pointRadius: 4, pointHoverRadius: 6, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: 'rgba(40,40,40,0.8)', borderRadius: 4, padding: { top: 2, bottom: 2, left: 4, right: 4 }, font: { size: 8, weight: 'bold' }, formatter: v => v } }] }, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 45 } }, plugins: { legend: { display: true, position: 'top', labels: { color: '#e0e0e0', font: { size: 11 } } }, datalabels: { display: false } }, scales: { y: { beginAtZero: true, grid: { color: 'rgba(255,255,255,0.05)' } }, x: { grid: { display: false } } } } });
+        const totalRebBrc = rebM2.map((v, i) => +(v + brcM2[i]).toFixed(2));
+        new Chart(document.getElementById('rebarBrcChart'),      { data: { labels, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrc, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
         new Chart(document.getElementById('kgm3Chart'),          { data: { labels, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
         new Chart(document.getElementById('costFtChart'),        { type: 'bar', data: { labels, datasets: [{ data: costT, backgroundColor: '#f44336' }] }, options: getOpt(' RM/ft2') });
         new Chart(document.getElementById('concreteCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: c_ft,  backgroundColor: '#3498db' }] }, options: getOpt('') });
