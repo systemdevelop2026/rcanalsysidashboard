@@ -120,7 +120,16 @@
             text-align: center; font-size: 0.9rem; z-index: 999;
             border-bottom: 2px solid #ef4444;
         }
-    </style>
+    
+    .tab-nav { display:flex; justify-content:center; gap:10px; margin:18px auto 6px; }
+    .tab-btn { background:#1e1e1e; color:#bbb; border:1px solid #444; border-radius:8px;
+               padding:10px 26px; font-size:.95rem; font-weight:600; letter-spacing:.5px;
+               cursor:pointer; transition:all .2s; text-transform:uppercase; }
+    .tab-btn:hover { color:#fff; border-color:#666; }
+    .tab-btn.active { background:#bb86fc; color:#121212; border-color:#bb86fc; }
+    .tab-panel { display:none; }
+    .tab-panel.active { display:block; }
+</style>
 </head>
 <body>
 
@@ -176,6 +185,12 @@
 
     <div class="dash-header"><h1>Area Efficiency and RC works design &amp; cost analysis</h1></div>
 
+    <div class="tab-nav">
+        <button class="tab-btn active" data-tab="highrise" onclick="showTab('highrise')">Highrise</button>
+        <button class="tab-btn" data-tab="landed" onclick="showTab('landed')">Landed</button>
+    </div>
+
+    <div id="panel-highrise" class="tab-panel active">
     <div class="container">
         <div class="summary-tab-top">
             <span class="count">20</span>
@@ -289,6 +304,122 @@
             </div>
         </div>
     </div><!-- /container -->
+    </div><!-- /panel-highrise -->
+    <div id="panel-landed" class="tab-panel">
+    <div class="container">
+        <div class="summary-tab-top">
+            <span class="count">1</span>
+            <span class="label">Landed Project</span>
+        </div>
+
+        <!-- SECTION 1 -->
+        <div class="section-container">
+            <h2 class="section-title">Section 1: Saleable Area Efficiency Analysis</h2>
+            <div class="full-width-section chart-section">
+                <h2>1. Space Efficiency: Saleable Area / GFA (%)</h2>
+                <div class="chart-container"><canvas id="efficiencyChartL"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 2 -->
+        <div class="section-container">
+            <h2 class="section-title">Section 2: Structural Design Analysis</h2>
+            <div class="full-width-section chart-section">
+                <h2>3. Design Density: Overall Concrete / GFA (m³/m²)</h2>
+                <div class="chart-container"><canvas id="concreteGfaChartL"></canvas></div>
+            </div>
+            <div class="full-width-section chart-section">
+                <h2>4. Reinforcement Ratios: Rebar (kg/m²) &amp; BRC (m2/m2)</h2>
+                <div class="chart-container"><canvas id="rebarBrcChartL"></canvas></div>
+            </div>
+            <div class="full-width-section chart-section">
+                <h2>5. Structural Poundage Design: Rebar &amp; BRC / Concrete (kg/m³) + Overall Reinforcement / Concrete</h2>
+                <div class="chart-container"><canvas id="kgm3ChartL"></canvas></div>
+            </div>
+        </div>
+
+        <!-- SECTION 3 -->
+        <div class="section-container">
+            <h2 class="section-title">Section 3: Reinforce Concrete Cost Analysis</h2>
+            <div class="full-width-section chart-section">
+                <h2>2. Cost Intensity: RC Total Amount / GFA (RM/ft²)</h2>
+                <div class="chart-container"><canvas id="costFtChartL"></canvas></div>
+            </div>
+            <div class="grid-container">
+                <div class="chart-section">
+                    <h2>6. Concrete Amt / GFA (RM/ft²)</h2>
+                    <div class="chart-container"><canvas id="concreteCostChartL"></canvas></div>
+                </div>
+                <div class="chart-section">
+                    <h2>7. Formwork Amt / GFA (RM/ft²)</h2>
+                    <div class="chart-container"><canvas id="formworkCostChartL"></canvas></div>
+                </div>
+            </div>
+            <div class="full-width-section chart-section">
+                <h2>8. Steel Cost Intensity: Rebar &amp; BRC Amt / GFA (RM/ft²) with Ratio (R:B)</h2>
+                <div class="chart-container"><canvas id="combinedSteelCostChartL"></canvas></div>
+            </div>
+        </div>
+
+
+        <!-- SECTION 5 -->
+        <div class="section-container">
+            <h2 class="section-title">Section 5: Summary of 1 Project</h2>
+            <div class="summary-block">
+                <h3>Design Poundage (kg/m³)</h3>
+                <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-label">Rebar/Concrete</span>
+                    <span class="stat-val">High: <span class="val-hl">57.08</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">57.08</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">57.08</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">BRC/Concrete</span>
+                    <span class="stat-val">High: <span class="val-hl">22.97</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">22.97</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">22.97</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Total Reinforcement/Concrete</span>
+                    <span class="stat-val">High: <span class="val-hl">80.06</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">80.06</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">80.06</span></span>
+                </div>
+                </div>
+            </div>
+            <div class="summary-block">
+                <h3>RC Work Cost Analysis (RM/ft²)</h3>
+                <div class="stats-grid-cost">
+                <div class="stat-card">
+                    <span class="stat-label">Concrete Amt/GFA</span>
+                    <span class="stat-val">High: <span class="val-hl">10.01</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">10.01</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">10.01</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Rebar Amt/GFA</span>
+                    <span class="stat-val">High: <span class="val-hl">4.85</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">4.85</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">4.85</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">BRC Amt/GFA</span>
+                    <span class="stat-val">High: <span class="val-hl">2.39</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">2.39</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">2.39</span></span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-label">Formwork Amt/GFA</span>
+                    <span class="stat-val">High: <span class="val-hl">7.36</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Low: <span class="val-hl">7.36</span> <span class="val-name">(ResidensiRia_Terrace)</span></span>
+                    <span class="stat-val">Avg: <span class="val-hl">7.36</span></span>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- /container -->
+    </div><!-- /panel-landed -->
 </div><!-- /dashboardView -->
 
 <script>
@@ -432,7 +563,55 @@
         new Chart(document.getElementById('combinedSteelCostChart'), { type: 'bar', data: { labels, datasets: [{ label: 'Rebar Amt', data: r_ft, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ft, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? ratS[ctx.dataIndex] + ":1" : "" } } } });
 
 
+
+
+        const labelsL = ['ResidensiRia_Terrace'];
+        const effL    = [78.00];
+        const costTL  = [24.61];
+        const concGL  = [0.25];
+        const rebM2L  = [14.51];
+        const brcM2L  = [5.84];
+        const rebM3L  = [57.08];
+        const brcM3L  = [22.97];
+        const ovM3L   = [80.06];
+        const c_ftL   = [10.01];
+        const f_ftL   = [7.36];
+        const r_ftL   = [4.85];
+        const b_ftL   = [2.39];
+        const ratSL   = r_ftL.map((r, i) => (r / (b_ftL[i] || 0.001)).toFixed(2));
+
+        const getOptL = (u) => ({
+            responsive: true, maintainAspectRatio: false,
+            layout: { padding: { top: 35 } },
+            plugins: {
+                legend: { display: false },
+                datalabels: { anchor: 'end', align: 'top', color: '#fff', font: { weight: 'bold', size: 9 }, formatter: (v) => v + u }
+            },
+            scales: { y: { beginAtZero: true }, x: { grid: { display: false } } }
+        });
+
+        new Chart(document.getElementById('efficiencyChartL'),    { type: 'bar', data: { labels: labelsL, datasets: [{ data: effL,   backgroundColor: '#4caf50' }] }, options: getOptL('%') });
+        new Chart(document.getElementById('concreteGfaChartL'),   { type: 'bar', data: { labels: labelsL, datasets: [{ data: concGL, backgroundColor: '#2196f3' }] }, options: getOptL(' m3/m2') });
+        const totalRebBrcL = rebM2L.map((v, i) => +(v + brcM2L[i]).toFixed(2));
+        new Chart(document.getElementById('rebarBrcChartL'),      { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrcL, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2L, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2L, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
+        new Chart(document.getElementById('kgm3ChartL'),          { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3L, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3L, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3L, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
+        new Chart(document.getElementById('costFtChartL'),        { type: 'bar', data: { labels: labelsL, datasets: [{ data: costTL, backgroundColor: '#f44336' }] }, options: getOptL(' RM/ft2') });
+        new Chart(document.getElementById('concreteCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: c_ftL,  backgroundColor: '#3498db' }] }, options: getOptL('') });
+        new Chart(document.getElementById('formworkCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: f_ftL,  backgroundColor: '#e67e22' }] }, options: getOptL('') });
+        new Chart(document.getElementById('combinedSteelCostChartL'), { type: 'bar', data: { labels: labelsL, datasets: [{ label: 'Rebar Amt', data: r_ftL, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ftL, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? ratSL[ctx.dataIndex] + ":1" : "" } } } });
+
+
+
     } // end initCharts
+
+    function showTab(which) {
+        document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('panel-' + which).classList.add('active');
+        document.querySelectorAll('.tab-btn').forEach(b =>
+            b.classList.toggle('active', b.dataset.tab === which));
+        window.dispatchEvent(new Event('resize'));
+    }
+
 
     /* ── BOOT ── */
     document.addEventListener('DOMContentLoaded', checkSessionState);
