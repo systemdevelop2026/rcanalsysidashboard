@@ -129,6 +129,28 @@
     .tab-btn.active { background:#bb86fc; color:#121212; border-color:#bb86fc; }
     .tab-panel { display:none; }
     .tab-panel.active { display:block; }
+
+    .proj-filter { background:#1a1a1a; border:1px solid #333; border-radius:12px;
+                   padding:16px 18px; margin:0 auto 28px; }
+    .proj-filter-head { display:flex; align-items:center; justify-content:space-between;
+                        flex-wrap:wrap; gap:10px; margin-bottom:12px; }
+    .proj-filter-title { color:#bb86fc; font-size:.85rem; font-weight:700;
+                         text-transform:uppercase; letter-spacing:1px; }
+    .proj-filter-actions { display:flex; gap:8px; }
+    .pf-act { background:#262626; color:#bbb; border:1px solid #444; border-radius:6px;
+              padding:5px 12px; font-size:.75rem; cursor:pointer; text-transform:uppercase;
+              letter-spacing:.5px; transition:all .15s; }
+    .pf-act:hover { color:#fff; border-color:#777; }
+    .pf-chips { display:flex; flex-wrap:wrap; gap:7px; }
+    .pf-chip { display:inline-flex; align-items:center; gap:6px; background:#262626;
+               color:#888; border:1px solid #3a3a3a; border-radius:20px; padding:5px 13px;
+               font-size:.78rem; cursor:pointer; user-select:none; transition:all .15s; }
+    .pf-chip:hover { border-color:#666; color:#ccc; }
+    .pf-chip.on { background:#2c2340; color:#e8dcff; border-color:#bb86fc; }
+    .pf-chip .tick { font-size:.7rem; opacity:.35; }
+    .pf-chip.on .tick { opacity:1; color:#03dac6; }
+    .pf-empty { color:#ff8a80; font-size:.8rem; margin-top:10px; display:none; }
+    .proj-filter.none-selected .pf-empty { display:block; }
 </style>
 </head>
 <body>
@@ -196,6 +218,17 @@
             <span class="count">22</span>
             <span class="label">Total Projects Analyzed</span>
         </div>
+            <div class="proj-filter">
+                <div class="proj-filter-head">
+                    <span class="proj-filter-title">Compare projects</span>
+                    <span class="proj-filter-actions">
+                        <button class="pf-act pf-all" type="button">Select all</button>
+                        <button class="pf-act pf-none" type="button">Clear</button>
+                    </span>
+                </div>
+                <div class="pf-chips"></div>
+                <div class="pf-empty">No projects selected - tick at least one to see the charts.</div>
+            </div>
 
         <!-- SECTION 1 -->
         <div class="section-container">
@@ -249,23 +282,23 @@
 
         <!-- SECTION 5 -->
         <div class="section-container">
-            <h2 class="section-title">Section 5: Summary of 22 Project</h2>
+            <h2 class="section-title pf-s5-title">Section 5: Summary of 22 Project</h2>
             <div class="summary-block">
                 <h3>Design Poundage (kg/m³)</h3>
                 <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card" data-metric="rebM3">
                     <span class="stat-label">Rebar/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">113.35</span> <span class="val-name">(CS2)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">34.52</span> <span class="val-name">(Suntrack RSKU660u (apartment))</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">75.30</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="brcM3">
                     <span class="stat-label">BRC/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">53.37</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.04</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">27.61</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="ovM3">
                     <span class="stat-label">Total Reinforcement/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">129.28</span> <span class="val-name">(Elmina499u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">67.94</span> <span class="val-name">(OIB336+336u)</span></span>
@@ -276,25 +309,25 @@
             <div class="summary-block">
                 <h3>RC Work Cost Analysis (RM/ft²)</h3>
                 <div class="stats-grid-cost">
-                <div class="stat-card">
+                <div class="stat-card" data-metric="c_ft">
                     <span class="stat-label">Concrete Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">18.68</span> <span class="val-name">(SFH693u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">6.11</span> <span class="val-name">(SK600 (Blk 1))</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">11.77</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="r_ft">
                     <span class="stat-label">Rebar Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.76</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">2.98</span> <span class="val-name">(Suntrack RSKU660u (apartment))</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">8.75</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="b_ft">
                     <span class="stat-label">BRC Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">7.92</span> <span class="val-name">(RSKU 396u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">0.01</span> <span class="val-name">(Green Camour 200u)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">4.13</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="f_ft">
                     <span class="stat-label">Formwork Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">15.10</span> <span class="val-name">(Green Camour 514u)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">6.69</span> <span class="val-name">(Suntrack RSKU660u (Carpark))</span></span>
@@ -311,6 +344,17 @@
             <span class="count">1</span>
             <span class="label">Landed Project</span>
         </div>
+            <div class="proj-filter">
+                <div class="proj-filter-head">
+                    <span class="proj-filter-title">Compare projects</span>
+                    <span class="proj-filter-actions">
+                        <button class="pf-act pf-all" type="button">Select all</button>
+                        <button class="pf-act pf-none" type="button">Clear</button>
+                    </span>
+                </div>
+                <div class="pf-chips"></div>
+                <div class="pf-empty">No projects selected - tick at least one to see the charts.</div>
+            </div>
 
         <!-- SECTION 1 -->
         <div class="section-container">
@@ -364,23 +408,23 @@
 
         <!-- SECTION 5 -->
         <div class="section-container">
-            <h2 class="section-title">Section 5: Summary of 1 Project</h2>
+            <h2 class="section-title pf-s5-title">Section 5: Summary of 1 Project</h2>
             <div class="summary-block">
                 <h3>Design Poundage (kg/m³)</h3>
                 <div class="stats-grid">
-                <div class="stat-card">
+                <div class="stat-card" data-metric="rebM3">
                     <span class="stat-label">Rebar/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">57.08</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">57.08</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">57.08</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="brcM3">
                     <span class="stat-label">BRC/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">22.97</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">22.97</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">22.97</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="ovM3">
                     <span class="stat-label">Total Reinforcement/Concrete</span>
                     <span class="stat-val">High: <span class="val-hl">80.06</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">80.06</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
@@ -391,25 +435,25 @@
             <div class="summary-block">
                 <h3>RC Work Cost Analysis (RM/ft²)</h3>
                 <div class="stats-grid-cost">
-                <div class="stat-card">
+                <div class="stat-card" data-metric="c_ft">
                     <span class="stat-label">Concrete Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">10.01</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">10.01</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">10.01</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="r_ft">
                     <span class="stat-label">Rebar Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">4.85</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">4.85</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">4.85</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="b_ft">
                     <span class="stat-label">BRC Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">2.39</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">2.39</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Avg: <span class="val-hl">2.39</span></span>
                 </div>
-                <div class="stat-card">
+                <div class="stat-card" data-metric="f_ft">
                     <span class="stat-label">Formwork Amt/GFA</span>
                     <span class="stat-val">High: <span class="val-hl">7.36</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
                     <span class="stat-val">Low: <span class="val-hl">7.36</span> <span class="val-name">(ResidensiRia494u_Terrace)</span></span>
@@ -527,6 +571,23 @@
         Chart.defaults.color = '#e0e0e0';
         Chart.defaults.borderColor = '#444';
 
+        /* project-filter: keep every chart instance + a pristine copy of its data */
+        const NativeChart = window.Chart;
+        const __charts = {};
+        function MkChart(el, cfg) {
+            const c = new NativeChart(el, cfg);
+            if (el && el.id) {
+                __charts[el.id] = {
+                    chart: c,
+                    live: cfg.data,          /* Chart.js reads this same object */
+                    labels: cfg.data.labels.slice(),
+                    data: cfg.data.datasets.map(d => d.data.slice())
+                };
+            }
+            return c;
+        }
+
+
         const labels = ['Suntrack RSKU660u (Carpark)', 'Suntrack RSKU660u (apartment)', 'ResidensiRia494u', 'Setia LCF640u (Blk C)', 'SK600 (Blk 1) (current price)', 'SK600 (Blk 1)', 'SFH693u', 'OIB336+336u', 'Elmina499u', 'IOI Alanis 2 (3 block)', 'BH1-B3B4', 'Sunway 149u', 'BKT2SA', 'EcoSun 500u', 'Setia Sky Ville 2 268u', 'PKNS 615u', 'Green Camour 514u', 'IOI Alyvia', 'Green Camour 200u', 'RSKU 396u', 'CS2', 'eden botanica'];
         const eff    = [0.00, 79.00, 62.00, 69.00, 73.00, 73.00, 45.00, 43.00, 42.95, 46.00, 72.00, 36.88, 42.48, 45.28, 42.60, 39.30, 42.79, 41.61, 32.88, 52.09, 51.90, 44.72];
         const costT  = [20.18, 30.71, 24.48, 29.17, 35.68, 25.00, 43.45, 39.28, 43.71, 36.34, 51.24, 42.60, 36.86, 32.95, 38.60, 38.80, 40.99, 30.77, 44.13, 36.11, 31.13, 36.16];
@@ -552,15 +613,15 @@
             scales: { y: { beginAtZero: true }, x: { grid: { display: false } } }
         });
 
-        new Chart(document.getElementById('efficiencyChart'),    { type: 'bar', data: { labels, datasets: [{ data: eff,   backgroundColor: '#4caf50' }] }, options: getOpt('%') });
-        new Chart(document.getElementById('concreteGfaChart'),   { type: 'bar', data: { labels, datasets: [{ data: concG, backgroundColor: '#2196f3' }] }, options: getOpt(' m3/m2') });
+        new MkChart(document.getElementById('efficiencyChart'),    { type: 'bar', data: { labels, datasets: [{ data: eff,   backgroundColor: '#4caf50' }] }, options: getOpt('%') });
+        new MkChart(document.getElementById('concreteGfaChart'),   { type: 'bar', data: { labels, datasets: [{ data: concG, backgroundColor: '#2196f3' }] }, options: getOpt(' m3/m2') });
         const totalRebBrc = rebM2.map((v, i) => +(v + brcM2[i]).toFixed(2));
-        new Chart(document.getElementById('rebarBrcChart'),      { data: { labels, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrc, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
-        new Chart(document.getElementById('kgm3Chart'),          { data: { labels, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
-        new Chart(document.getElementById('costFtChart'),        { type: 'bar', data: { labels, datasets: [{ data: costT, backgroundColor: '#f44336' }] }, options: getOpt(' RM/ft2') });
-        new Chart(document.getElementById('concreteCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: c_ft,  backgroundColor: '#3498db' }] }, options: getOpt('') });
-        new Chart(document.getElementById('formworkCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: f_ft,  backgroundColor: '#e67e22' }] }, options: getOpt('') });
-        new Chart(document.getElementById('combinedSteelCostChart'), { type: 'bar', data: { labels, datasets: [{ label: 'Rebar Amt', data: r_ft, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ft, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? ratS[ctx.dataIndex] + ":1" : "" } } } });
+        new MkChart(document.getElementById('rebarBrcChart'),      { data: { labels, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrc, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
+        new MkChart(document.getElementById('kgm3Chart'),          { data: { labels, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
+        new MkChart(document.getElementById('costFtChart'),        { type: 'bar', data: { labels, datasets: [{ data: costT, backgroundColor: '#f44336' }] }, options: getOpt(' RM/ft2') });
+        new MkChart(document.getElementById('concreteCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: c_ft,  backgroundColor: '#3498db' }] }, options: getOpt('') });
+        new MkChart(document.getElementById('formworkCostChart'),  { type: 'bar', data: { labels, datasets: [{ data: f_ft,  backgroundColor: '#e67e22' }] }, options: getOpt('') });
+        new MkChart(document.getElementById('combinedSteelCostChart'), { type: 'bar', data: { labels, datasets: [{ label: 'Rebar Amt', data: r_ft, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ft, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? (ctx.chart.data.datasets[0].data[ctx.dataIndex] / (ctx.chart.data.datasets[1].data[ctx.dataIndex] || 0.001)).toFixed(2) + ":1" : "" } } } });
 
 
 
@@ -590,18 +651,122 @@
             scales: { y: { beginAtZero: true }, x: { grid: { display: false } } }
         });
 
-        new Chart(document.getElementById('efficiencyChartL'),    { type: 'bar', data: { labels: labelsL, datasets: [{ data: effL,   backgroundColor: '#4caf50' }] }, options: getOptL('%') });
-        new Chart(document.getElementById('concreteGfaChartL'),   { type: 'bar', data: { labels: labelsL, datasets: [{ data: concGL, backgroundColor: '#2196f3' }] }, options: getOptL(' m3/m2') });
+        new MkChart(document.getElementById('efficiencyChartL'),    { type: 'bar', data: { labels: labelsL, datasets: [{ data: effL,   backgroundColor: '#4caf50' }] }, options: getOptL('%') });
+        new MkChart(document.getElementById('concreteGfaChartL'),   { type: 'bar', data: { labels: labelsL, datasets: [{ data: concGL, backgroundColor: '#2196f3' }] }, options: getOptL(' m3/m2') });
         const totalRebBrcL = rebM2L.map((v, i) => +(v + brcM2L[i]).toFixed(2));
-        new Chart(document.getElementById('rebarBrcChartL'),      { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrcL, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2L, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2L, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
-        new Chart(document.getElementById('kgm3ChartL'),          { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3L, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3L, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3L, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
-        new Chart(document.getElementById('costFtChartL'),        { type: 'bar', data: { labels: labelsL, datasets: [{ data: costTL, backgroundColor: '#f44336' }] }, options: getOptL(' RM/ft2') });
-        new Chart(document.getElementById('concreteCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: c_ftL,  backgroundColor: '#3498db' }] }, options: getOptL('') });
-        new Chart(document.getElementById('formworkCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: f_ftL,  backgroundColor: '#e67e22' }] }, options: getOptL('') });
-        new Chart(document.getElementById('combinedSteelCostChartL'), { type: 'bar', data: { labels: labelsL, datasets: [{ label: 'Rebar Amt', data: r_ftL, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ftL, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? ratSL[ctx.dataIndex] + ":1" : "" } } } });
+        new MkChart(document.getElementById('rebarBrcChartL'),      { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Total Reinf (kg/m2)', data: totalRebBrcL, borderColor: '#f1c40f', backgroundColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', color: '#f1c40f', backgroundColor: '#333', borderRadius: 4, padding: 2, font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'Rebar kg/m2', data: rebM2L, backgroundColor: '#bb86fc', datalabels: { display: true, anchor: 'end', align: 'top', color: '#bb86fc', font: { size: 8, weight: 'bold' } } }, { type: 'bar', label: 'BRC kg/m2', data: brcM2L, backgroundColor: '#03dac6', datalabels: { display: true, anchor: 'end', align: 'top', color: '#03dac6', font: { size: 8, weight: 'bold' } } }]}, options: { responsive: true, maintainAspectRatio: false, layout: { padding: { top: 35 } }, plugins: { legend: { display: true, position: 'top' } }, scales: { y: { beginAtZero: true }, x: { grid: { display: false } } } } });
+        new MkChart(document.getElementById('kgm3ChartL'),          { data: { labels: labelsL, datasets: [{ type: 'line', label: 'Overall Reinf (kg/m3)', data: ovM3L, borderColor: '#f1c40f', tension: 0.3, fill: false, datalabels: { display: true, align: 'top', anchor: 'end', backgroundColor: '#333', borderRadius: 4, padding: 2 } }, { type: 'bar', label: 'Rebar/Conc', data: rebM3L, backgroundColor: '#9b59b6' }, { type: 'bar', label: 'BRC/Conc', data: brcM3L, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { display: false } } } });
+        new MkChart(document.getElementById('costFtChartL'),        { type: 'bar', data: { labels: labelsL, datasets: [{ data: costTL, backgroundColor: '#f44336' }] }, options: getOptL(' RM/ft2') });
+        new MkChart(document.getElementById('concreteCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: c_ftL,  backgroundColor: '#3498db' }] }, options: getOptL('') });
+        new MkChart(document.getElementById('formworkCostChartL'),  { type: 'bar', data: { labels: labelsL, datasets: [{ data: f_ftL,  backgroundColor: '#e67e22' }] }, options: getOptL('') });
+        new MkChart(document.getElementById('combinedSteelCostChartL'), { type: 'bar', data: { labels: labelsL, datasets: [{ label: 'Rebar Amt', data: r_ftL, backgroundColor: '#9b59b6' }, { label: 'BRC Amt', data: b_ftL, backgroundColor: '#1abc9c' }]}, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: true, position: 'top' }, datalabels: { anchor: 'end', align: 'top', font: { size: 8, weight: 'bold' }, formatter: (v, ctx) => (ctx.datasetIndex === 0) ? (ctx.chart.data.datasets[0].data[ctx.dataIndex] / (ctx.chart.data.datasets[1].data[ctx.dataIndex] || 0.001)).toFixed(2) + ":1" : "" } } } });
 
 
 
+
+        /* ── PROJECT FILTER ─────────────────────────────────────────── */
+        const PF_PANELS = [
+            { id: 'highrise', sfx: '', noun: 'Total Projects Analyzed', names: labels, metrics: { b_ft: b_ft, brcM3: brcM3, c_ft: c_ft, f_ft: f_ft, ovM3: ovM3, r_ft: r_ft, rebM3: rebM3 } },
+            { id: 'landed', sfx: 'L', noun: 'Landed Project', names: labelsL, metrics: { b_ft: b_ftL, brcM3: brcM3L, c_ft: c_ftL, f_ft: f_ftL, ovM3: ovM3L, r_ft: r_ftL, rebM3: rebM3L } }
+        ];
+
+        function pfStats(vals, names) {
+            if (!vals.length) return null;
+            let hi = 0, lo = 0, sum = 0;
+            vals.forEach((v, i) => {
+                if (v > vals[hi]) hi = i;
+                if (v < vals[lo]) lo = i;
+                sum += v;
+            });
+            return { high: vals[hi], highName: names[hi],
+                     low: vals[lo], lowName: names[lo],
+                     avg: sum / vals.length };
+        }
+
+        function pfApply(panel, picked) {
+            const root = document.getElementById('panel-' + panel.id);
+            if (!root) return;
+            const idx = [];
+            picked.forEach((on, i) => { if (on) idx.push(i); });
+
+            /* charts */
+            Object.keys(__charts).forEach(cid => {
+                const want = panel.sfx ? cid.endsWith(panel.sfx) : !cid.endsWith('L');
+                if (!want) return;
+                const rec = __charts[cid];
+                if (rec.labels.length !== picked.length) return;
+                /* mutate the config object Chart.js holds, not chart.data -
+                   same object, and it survives any wrapper/stub differences */
+                rec.live.labels = idx.map(i => rec.labels[i]);
+                rec.live.datasets.forEach((ds, di) => {
+                    ds.data = idx.map(i => rec.data[di][i]);
+                });
+                if (rec.chart && typeof rec.chart.update === 'function') rec.chart.update();
+            });
+
+            /* Section 5 stat cards */
+            const names = idx.map(i => panel.names[i]);
+            root.querySelectorAll('.stat-card[data-metric]').forEach(card => {
+                const arr = panel.metrics[card.dataset.metric];
+                if (!arr) return;
+                const s = pfStats(idx.map(i => arr[i]), names);
+                const vals = card.querySelectorAll('.stat-val');
+                const nm = card.querySelectorAll('.val-name');
+                if (!s) {
+                    vals.forEach(v => { v.querySelector('.val-hl').textContent = '-'; });
+                    nm.forEach(n => { n.textContent = '(none)'; });
+                    return;
+                }
+                vals[0].querySelector('.val-hl').textContent = s.high.toFixed(2);
+                vals[1].querySelector('.val-hl').textContent = s.low.toFixed(2);
+                vals[2].querySelector('.val-hl').textContent = s.avg.toFixed(2);
+                if (nm[0]) nm[0].textContent = '(' + s.highName + ')';
+                if (nm[1]) nm[1].textContent = '(' + s.lowName + ')';
+            });
+
+            /* counts */
+            const n = idx.length;
+            const cnt = root.querySelector('.summary-tab-top .count');
+            if (cnt) cnt.textContent = n;
+            const lbl = root.querySelector('.summary-tab-top .label');
+            if (lbl) lbl.textContent = (n === panel.names.length)
+                ? panel.noun : panel.noun + ' (' + n + ' of ' + panel.names.length + ')';
+            const s5 = root.querySelector('.pf-s5-title');
+            if (s5) s5.textContent = 'Section 5: Summary of ' + n + ' Project';
+
+            root.querySelector('.proj-filter').classList.toggle('none-selected', n === 0);
+        }
+
+        function pfBuild(panel) {
+            const root = document.getElementById('panel-' + panel.id);
+            if (!root) return;
+            const host = root.querySelector('.pf-chips');
+            if (!host) return;
+            const picked = panel.names.map(() => true);
+
+            panel.names.forEach((nm, i) => {
+                const chip = document.createElement('span');
+                chip.className = 'pf-chip on';
+                chip.innerHTML = '<span class="tick">&#10003;</span>' + nm;
+                chip.addEventListener('click', () => {
+                    picked[i] = !picked[i];
+                    chip.classList.toggle('on', picked[i]);
+                    pfApply(panel, picked);
+                });
+                host.appendChild(chip);
+            });
+
+            const setAll = (on) => {
+                picked.forEach((_, i) => { picked[i] = on; });
+                host.querySelectorAll('.pf-chip').forEach(c => c.classList.toggle('on', on));
+                pfApply(panel, picked);
+            };
+            root.querySelector('.pf-all').addEventListener('click', () => setAll(true));
+            root.querySelector('.pf-none').addEventListener('click', () => setAll(false));
+            pfApply(panel, picked);
+        }
+
+        PF_PANELS.forEach(pfBuild);
     } // end initCharts
 
     function showTab(which) {
